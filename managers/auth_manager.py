@@ -36,7 +36,9 @@ class CustomHTTPBearer(HTTPBearer):
                 res.credentials, config("SECRET_KEY"), algorithms=["HS256"]
             )
             user_data = await database.fetch_one(
-                users_models.users.select().where(users_models.users.c.id == payload["sub"])
+                users_models.users.select().where(
+                    users_models.users.c.id == payload["sub"]
+                )
             )
             request.state.user = user_data
             return user_data
