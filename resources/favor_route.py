@@ -22,6 +22,7 @@ async def get_user_favors(request: Request):
 @router.post(
     "/user_favors/",
     dependencies=[Depends(oauth2_scheme),],
+    status_code=201,
 )
 async def create_favor(request: Request, favor: FavorCreate):
     user = request.state.user
