@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from managers.users_manager import UserManager, AdminManager, ModetatorManager
 
-from schemas.reguest.user import UserRegisterIn
+from schemas.reguest.user import UserRegisterIn, UserLoginIn
 
 router = APIRouter(tags=["Users"])
 
@@ -63,4 +63,10 @@ async def get_moderators():
 async def create_user(moderator_data: UserRegisterIn):
     print("wliza")
     token = await ModetatorManager.register(moderator_data.dict())
+    return {"token": token}
+
+
+@router.post("/login")
+async def login(credentials: UserLoginIn):
+    token = await UserManager.login(credentials.dict())
     return {"token": token}

@@ -23,6 +23,17 @@ class UserManager:
             users_models.users.select().where(users_models.users.c.id == id_)
         )
         return AuthManager.encode_token(user_do)
+    
+    @staticmethod
+    async def login(credentials):
+        user_do = await database.fetch_one(
+            users_models.users.select().where(users_models.users.c.email == credentials["email"])
+        )
+        if not user_do:
+            raise HTTPException(400, "Wrong email or password")
+        elif not pwd_context.verify(credentials["password"], user_do["password"]):
+            raise HTTPException(400, "Wrong email or password")
+        return AuthManager.encode_token(user_do)
 
     @staticmethod
     async def get_user_by_email(email):
