@@ -19,6 +19,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup():
+    print("is it connecting")
     await database.connect()
 
 

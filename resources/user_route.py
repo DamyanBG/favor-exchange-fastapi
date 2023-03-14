@@ -22,6 +22,8 @@ async def get_users():
 )
 async def create_user(user_data: UserRegisterIn):
     print("wliza")
+    print(user_data)
+    print(type(user_data))
     token = await UserManager.register(user_data.dict())
     return {"token": token}
 
@@ -60,7 +62,7 @@ async def get_moderators():
     "/moderators/",
     status_code=201,
 )
-async def create_user(moderator_data: UserRegisterIn):
+async def create_moderator(moderator_data: UserRegisterIn):
     print("wliza")
     token = await ModetatorManager.register(moderator_data.dict())
     return {"token": token}

@@ -3,3 +3,7 @@ The main problem is the money problem. Imagine if an old woman needs some force 
 But she can offer for example cooking skills, watching little kids time and etc. In that case she can use that app to make a request for somebody who can move a heavy couch. 
 
 I think it is a good open source idea and even if this app helps to 1 person to fix a real problem, for me that is enought to say that the app is great!
+
+# Start the application
+
+You can start the application with uvicorn main:app terminal command.
