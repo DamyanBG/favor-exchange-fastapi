@@ -28,3 +28,11 @@ async def create_favor(request: Request, favor: FavorCreate):
     user = request.state.user
     new_favor = await FavorManager.create_favor(favor.dict(), user)
     return new_favor
+
+@router.get(
+    "/all_favors/",
+    response_model=List[FavorOut]
+)
+async def get_user_favors():
+    all_favors = await FavorManager.select_all_favors()
+    return all_favors

@@ -17,3 +17,9 @@ class FavorManager:
         q = q.where(favors_model.favors.c.user_id == user["id"])
         user_favors = await database.fetch_all(q)
         return user_favors
+    
+    @staticmethod
+    async def select_all_favors():
+        q = favors_model.favors.select()
+        all_favors = await database.fetch_all(q)
+        return all_favors

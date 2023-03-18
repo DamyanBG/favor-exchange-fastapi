@@ -72,3 +72,10 @@ async def create_moderator(moderator_data: UserRegisterIn):
 async def login(credentials: UserLoginIn):
     token = await UserManager.login(credentials.dict())
     return {"token": token}
+
+
+# TO DO
+@router.post("/logout")
+async def login(credentials: UserLoginIn):
+    token = await UserManager.login(credentials.dict())
+    return {"token": token}
